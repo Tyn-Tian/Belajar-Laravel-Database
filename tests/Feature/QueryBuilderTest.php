@@ -220,7 +220,6 @@ class QueryBuilderTest extends TestCase
     public function testOrdering()
     {
         $this->insertProducts();
-
         $collection = DB::table("products")->whereNotNull("id")
             ->orderBy("price", "desc")->orderBy("name", "asc")->get();
 
