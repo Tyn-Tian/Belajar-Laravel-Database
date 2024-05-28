@@ -30,4 +30,16 @@ class QueryBuilderTest extends TestCase
         $result = DB::select("SELECT COUNT(id) as total FROM categories");
         self::assertEquals(2, $result[0]->total);
     }
+
+    public function testSelect()
+    {
+        $this->testInsert();
+
+        $collection = DB::table("categories")->select(["id", "name"])->get();
+        self::assertNotNull($collection);
+
+        $collection->each(function ($item) {
+            Log::info(json_encode($item));
+        });
+    }
 }
