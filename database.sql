@@ -28,3 +28,11 @@ create table products
     created_at timestamp,
     constraint fk_category_id foreign key (category_id) references categories (id)
 ) engine InnoDB;
+
+drop table products;
+
+drop table categories;
+
+drop table counters;
+
+show tables;
