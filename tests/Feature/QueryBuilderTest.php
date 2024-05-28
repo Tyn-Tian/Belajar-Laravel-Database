@@ -228,4 +228,18 @@ class QueryBuilderTest extends TestCase
             Log::info(json_encode($item));
         });
     }
+
+    public function testPaging()
+    {
+        $this->insertProducts();
+        $collection = DB::table("products")
+            ->skip(0)
+            ->take(2)
+            ->get();
+
+        self::assertCount(2, $collection);
+        $collection->each(function ($item) {
+            Log::info(json_encode($item));
+        });
+    }
 }
